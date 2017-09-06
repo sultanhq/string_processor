@@ -88,6 +88,12 @@ describe Processor do
       result = []
       expect(processor.process(test_data)).to eq result
     end
+
+    it 'does not return an empty / nil string when supplied one' do
+      test_data = ['']
+      result = []
+      expect(processor.process(test_data)).to eq result
+    end
   end
 
   context 'End to end tests' do
