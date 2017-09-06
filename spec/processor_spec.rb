@@ -94,20 +94,19 @@ describe Processor do
     it 'should return multiple strings if passed multiple convertable strings' do
       test_data = [
         'AAAc91%cWwWkLq$1ci3_848v3d__K',
-        'ywXPlO6nNLSiS91___9awW5e43Rjl',
-        'AWQimHabV1Eh£ZrGG7Ikn6hhHpFMu',
-        'ntMeCQTNVq0Rr$2NtD6ZoSCx6fnEH',
-        '3EoGwAStRdbMCcykP3QbCqUq6o75r',
-        'l6H9FKzYe6e676h3we4N68PT9tg60'
+        'ywXPl£031O6nNLSiS91___9awW5e43Rjl',
+        'AW$$HabV1Eh£ZrGG7Ikn6hhHpFMu',
+        'ntMe$£QTNVq0Rr$2NtD6ZoSCx6fnEH',
+        '3ES_dbMCcykP3QbCqUq6o75r',
+        'l644F34KzYe6e676h3we4N68PT9tg60'
       ]
       result = [
           'Ac91%cWwWkLq£1c',
-          'ywXPlO6nNLSiS91',
-          'AWQimHabV1Eh£Zr',
-          'ntMeCQTNVq0Rr£2',
-          '3EoGwAStRdbMCcy',
-          'l6H9FKzYe6e676h'
-      ]
+          'ywXPl£031O6nNLS',
+          'AW£HabV1Eh£ZrG7',
+          'ntMe£QTNVq0Rr£2',
+          '3ESdbMCcykP3QbC',
+          'l6F3KzYe6e676h3']
       expect(processor.process(test_data)).to eq result
     end
 
