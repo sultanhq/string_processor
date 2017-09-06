@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'Processor'
 
 describe Processor do
-  unwantedChars = ['_']
+  unwantedChars = %w[_ 4]
   subject(:processor) { described_class.new(unwantedChars) }
 
   context 'Unwanted Chars' do
@@ -11,5 +11,11 @@ describe Processor do
       result = ['ac']
       expect(processor.process(test_data)).to eq result
     end
+
+    it "can remove any instances of '4'" do
+        test_data = ["a4c"]
+        result = ["ac"]
+        expect(processor.process(test_data)).to eq result
+    end  
   end
 end
