@@ -1,9 +1,8 @@
 class Processor
-
   def initialize(params = {})
-      @unwantedChars = params.fetch(:unwantedChars, [])
-      @changeableChars = params.fetch(:changeableChars, {})
-      @stringLength = params.fetch(:stringLength, 15)
+    @unwantedChars = params.fetch(:unwantedChars, [])
+    @changeableChars = params.fetch(:changeableChars, {})
+    @stringLength = params.fetch(:stringLength, 15)
   end
 
   def process(input)
@@ -12,9 +11,7 @@ class Processor
       changeChars(string)
       removeContiguous(string)
       outputString = truncateString(string)
-      if checkForEmptyString?(outputString)
-        next
-      end
+      next if checkForEmptyString?(outputString)
       outputString
     end.compact
   end
@@ -34,11 +31,11 @@ class Processor
   end
 
   def removeContiguous(string)
-      string.squeeze!
+    string.squeeze!
   end
 
   def truncateString(string)
-    if (string.length > @stringLength)
+    if string.length > @stringLength
       string[0...@stringLength]
     else
       string

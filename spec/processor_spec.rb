@@ -107,12 +107,13 @@ describe Processor do
         'l644F34KzYe6e676h3we4N68PT9tg60'
       ]
       result = [
-          'Ac91%cWwWkLq£1c',
-          'ywXPl£031O6nNLS',
-          'AW£HabV1Eh£ZrG7',
-          'ntMe£QTNVq0Rr£2',
-          '3ESdbMCcykP3QbC',
-          'l6F3KzYe6e676h3']
+        'Ac91%cWwWkLq£1c',
+        'ywXPl£031O6nNLS',
+        'AW£HabV1Eh£ZrG7',
+        'ntMe£QTNVq0Rr£2',
+        '3ESdbMCcykP3QbC',
+        'l6F3KzYe6e676h3'
+      ]
       expect(processor.process(test_data)).to eq result
     end
 

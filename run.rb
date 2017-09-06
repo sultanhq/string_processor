@@ -13,10 +13,10 @@ inputStrings = [
   '3ES_dbMCcykP3QbCqUq6o75r',
   'l644F34KzYe6e676h3we4N68PT9tg60'
 ]
-puts ""
+puts ''
 puts 'Input:'
 puts inputStrings
-puts ""
+puts ''
 puts 'Output:'
 puts processor.process(inputStrings)
 
@@ -30,10 +30,10 @@ inputStrings2 = [
   '🙂'
 ]
 
-processor2 = Processor.new(unwantedChars: ['3','$','^','?','/'] , changeableChars: {'a' => 'f'}, stringLength: 9)
-puts ""
+processor2 = Processor.new(unwantedChars: ['3', '$', '^', '?', '/'], changeableChars: { 'a' => 'f', 'e' => 'g' }, stringLength: 9)
+puts ''
 puts 'Input:'
 puts inputStrings2
-puts ""
+puts ''
 puts 'Output:'
 puts processor2.process(inputStrings2)
