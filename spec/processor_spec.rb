@@ -4,7 +4,9 @@ require 'Processor'
 describe Processor do
   unwantedChars = %w[_ 4]
   changeableChars = { '$' => '£' }
-  subject(:processor) { described_class.new(unwantedChars: unwantedChars, changeableChars: changeableChars) }
+  stringLength = 15
+
+  subject(:processor) { described_class.new(unwantedChars: unwantedChars, changeableChars: changeableChars, stringLength: stringLength) }
 
   context 'Unwanted Chars' do
     it "can remove any instances of '_'" do
@@ -62,6 +64,20 @@ describe Processor do
     it 'does not remove contiguous duplicate characters of alternating case' do
       test_data = ['aAa']
       result = ['aAa']
+      expect(processor.process(test_data)).to eq result
+    end
+  end
+
+  context 'String Length' do
+    it 'can truncate a long string to 15 chars' do
+      test_data = ['jhs@£$%^&  *yat6%RAIDTUGLASJD824  QW']
+      result = ['jhs@£%^& *yat6%']
+      expect(processor.process(test_data)).to eq result
+    end
+
+    it 'will not truncate a short string' do
+      test_data = ['jhs@£']
+      result = ['jhs@£']
       expect(processor.process(test_data)).to eq result
     end
   end
