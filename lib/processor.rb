@@ -9,6 +9,7 @@ class Processor
     input.collect do |string|
       removeUnwantedChars(string)
       changeChars(string)
+      removeContiguous(string)
       string
     end
   end
@@ -27,4 +28,7 @@ class Processor
     end
   end
 
+  def removeContiguous(string)
+      string.squeeze!
+  end
 end
