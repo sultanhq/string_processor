@@ -1,7 +1,7 @@
 class Processor
 
-  def initialize(unwantedChars)
-      @unwantedChars = unwantedChars
+  def initialize(params = {})
+      @unwantedChars = params.fetch(:unwantedChars, [])
   end
 
   def process(input)

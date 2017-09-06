@@ -3,7 +3,7 @@ require 'Processor'
 
 describe Processor do
   unwantedChars = %w[_ 4]
-  subject(:processor) { described_class.new(unwantedChars) }
+  subject(:processor) { described_class.new(:unwantedChars => unwantedChars) }
 
   context 'Unwanted Chars' do
     it "can remove any instances of '_'" do
@@ -13,21 +13,21 @@ describe Processor do
     end
 
     it "can remove any instances of '4'" do
-        test_data = ["a4c"]
-        result = ["ac"]
-        expect(processor.process(test_data)).to eq result
+      test_data = ['a4c']
+      result = ['ac']
+      expect(processor.process(test_data)).to eq result
     end
 
     it "can remove any instances of '4' & '_'" do
-        test_data = ["a4c_"]
-        result = ["ac"]
-        expect(processor.process(test_data)).to eq result
+      test_data = ['a4c_']
+      result = ['ac']
+      expect(processor.process(test_data)).to eq result
     end
 
-    it "does not remove any instances of other chars ( !@%^&*() )" do
-        test_data = ["a4c_!@%^&*()"]
-        result = ["ac!@%^&*()"]
-        expect(processor.process(test_data)).to eq result
+    it 'does not remove any instances of other chars ( !@%^&*() )' do
+      test_data = ['a4c_!@%^&*()']
+      result = ['ac!@%^&*()']
+      expect(processor.process(test_data)).to eq result
     end
   end
 end
