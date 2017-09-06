@@ -16,6 +16,12 @@ describe Processor do
         test_data = ["a4c"]
         result = ["ac"]
         expect(processor.process(test_data)).to eq result
-    end  
+    end
+    
+    it "can remove any instances of '4' & '_'" do
+        test_data = ["a4c_"]
+        result = ["ac"]
+        expect(processor.process(test_data)).to eq result
+    end
   end
 end
