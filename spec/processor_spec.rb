@@ -81,4 +81,12 @@ describe Processor do
       expect(processor.process(test_data)).to eq result
     end
   end
+  
+  context 'Edge Cases' do
+    it "does not return an empty / nil string" do
+      test_data = ['_']
+      result = []
+      expect(processor.process(test_data)).to eq result
+    end
+  end
 end

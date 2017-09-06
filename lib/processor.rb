@@ -12,7 +12,11 @@ class Processor
       changeChars(string)
       removeContiguous(string)
       outputString = truncateString(string)
-    end
+      if checkForEmptyString?(outputString)
+        next
+      end
+      outputString
+    end.compact
   end
 
   private
@@ -39,5 +43,9 @@ class Processor
     else
       string
     end
+  end
+
+  def checkForEmptyString?(string)
+    string.to_s.empty?
   end
 end
