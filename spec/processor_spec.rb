@@ -3,7 +3,8 @@ require 'Processor'
 
 describe Processor do
   unwantedChars = %w[_ 4]
-  subject(:processor) { described_class.new(:unwantedChars => unwantedChars) }
+  changeableChars = { '$' => '£' }
+  subject(:processor) { described_class.new(:unwantedChars => unwantedChars, :changeableChars => changeableChars) }
 
   context 'Unwanted Chars' do
     it "can remove any instances of '_'" do
@@ -27,6 +28,14 @@ describe Processor do
     it 'does not remove any instances of other chars ( !@%^&*() )' do
       test_data = ['a4c_!@%^&*()']
       result = ['ac!@%^&*()']
+      expect(processor.process(test_data)).to eq result
+    end
+  end
+
+  context 'Changing of Chars' do
+    it "can change any instances of '$' to '£'" do
+      test_data = ['$105']
+      result = ['£105']
       expect(processor.process(test_data)).to eq result
     end
   end
