@@ -81,11 +81,46 @@ describe Processor do
       expect(processor.process(test_data)).to eq result
     end
   end
-  
+
   context 'Edge Cases' do
-    it "does not return an empty / nil string" do
+    it 'does not return an empty / nil string' do
       test_data = ['_']
       result = []
+      expect(processor.process(test_data)).to eq result
+    end
+  end
+
+  context 'End to end tests' do
+    it 'should return multiple strings if passed multiple convertable strings' do
+      test_data = [
+        'AAAc91%cWwWkLq$1ci3_848v3d__K',
+        'ywXPlO6nNLSiS91___9awW5e43Rjl',
+        'AWQimHabV1Eh£ZrGG7Ikn6hhHpFMu',
+        'ntMeCQTNVq0Rr$2NtD6ZoSCx6fnEH',
+        '3EoGwAStRdbMCcykP3QbCqUq6o75r',
+        'l6H9FKzYe6e676h3we4N68PT9tg60'
+      ]
+      result = [
+          'Ac91%cWwWkLq£1c',
+          'ywXPlO6nNLSiS91',
+          'AWQimHabV1Eh£Zr',
+          'ntMeCQTNVq0Rr£2',
+          '3EoGwAStRdbMCcy',
+          'l6H9FKzYe6e676h'
+      ]
+      expect(processor.process(test_data)).to eq result
+    end
+
+    it 'should return string if passed 1 convertable strings and ignore incorrect strings' do
+      test_data = [
+        'AAAc91%cWwWkLq$1ci3_848v3d__K',
+        '_',
+        '_4',
+        '4_',
+        '',
+        ''
+      ]
+      result = ['Ac91%cWwWkLq£1c']
       expect(processor.process(test_data)).to eq result
     end
   end
